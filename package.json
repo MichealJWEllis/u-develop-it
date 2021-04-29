@@ -1,0 +1,30 @@
+{
+  "name": "u-develop-it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichealJWEllis/u-develop-it.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichealJWEllis/u-develop-it/issues"
+  },
+  "homepage": "https://github.com/MichealJWEllis/u-develop-it#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7"
+  }
+}

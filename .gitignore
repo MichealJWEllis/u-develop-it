@@ -1,3 +1,1 @@
-.vscode
-.log
-MYSQL.SESSION.sql
+node_modules/

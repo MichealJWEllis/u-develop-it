@@ -52,6 +52,28 @@ app.get('/api/canidates/:id', (req, res) => {
   });
 });
 
+// Delete a canidate
+app.delete('/api/canidates/:id', (req, res) => {
+  const sql = `DELETE FROM canidates WHERE id = ?`
+  const params = [req.params.id]
+
+  db.query(sql, params, (err, result) => {
+    if (err) {
+      res.statusMessage(400).json({ error: req.message })
+    } else if (!result.affectedRows) {
+      res.json({
+        message: 'Canidate not found'
+      })
+    } else {
+      res.json({
+        message: 'deleted',
+        changes: result.affectedRows,
+        id: req.params.id
+      })
+    }
+  })
+})
+
 
 // Query all table info
 // db.query(`SELECT * FROM canidates`, (err, rows) => {

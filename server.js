@@ -19,6 +19,40 @@ const db = mysql.createConnection(
   },
   console.log('Connected to the election database.')
 )
+
+// Get all canidates
+app.get('/api/canidates', (req, res) => {
+  const sql = `SELECT * FROM canidates`;
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message })
+      return
+    }
+    res.json({
+        message: 'success',
+        data: rows     
+    })
+  })
+})
+
+// Get a single candidate
+app.get('/api/canidates/:id', (req, res) => {
+  const sql = `SELECT * FROM canidates WHERE id = ?`;
+  const params = [req.params.id];
+
+  db.query(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: row
+    });
+  });
+});
+
+
 // Query all table info
 // db.query(`SELECT * FROM canidates`, (err, rows) => {
 //   console.log(rows)
@@ -54,12 +88,12 @@ const db = mysql.createConnection(
 
 
 // Default response for any other request (NOT found) 
-app.use((req,res) =>{
+app.use((req, res) => {
   res.status(404).end()
 })
 
 
 // Port listener
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
   console.log(`Server up on port: ${PORT}`)
 })

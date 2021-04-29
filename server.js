@@ -19,6 +19,38 @@ const db = mysql.createConnection(
   },
   console.log('Connected to the election database.')
 )
+// Query all table info
+// db.query(`SELECT * FROM canidates`, (err, rows) => {
+//   console.log(rows)
+// })
+
+// Query a Single canidate
+// db.query(`SELECT * FROM canidates WHERE id = 1`, (err, row) => {
+//   if (err) {
+//     console.log(err)
+//   }
+//   console.log(row)
+// })
+
+// Delete a candidate
+// db.query(`DELETE FROM canidates WHERE id = ?`, 1, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(result);
+// });
+
+// Create a canidate
+// const sql = `INSERT INTO canidates (id, first_name, last_name, industry_connected)
+//               VALUES(?,?,?,?)`
+// const parms = [1, 'Ronald', 'Firbank', 1]
+
+// db.query(sql, parms, (err, result) => {
+//   if (err) {
+//     console.log(err)
+//   }
+//   console.log(result)
+// });
 
 
 // Default response for any other request (NOT found) 

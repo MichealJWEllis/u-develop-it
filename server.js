@@ -23,7 +23,7 @@ const db = mysql.createConnection(
 
 // Get all canidates
 app.get('/api/canidates', (req, res) => {
-  const sql = `SELECT * FROM canidates`;
+  const sql = `SELECT canidates.*, parties.name AS party_name FROM canidates LEFT JOIN parties ON canidates.party_id = parties.id`;
   db.query(sql, (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message })
@@ -38,7 +38,7 @@ app.get('/api/canidates', (req, res) => {
 
 // Get a single candidate
 app.get('/api/canidates/:id', (req, res) => {
-  const sql = `SELECT * FROM canidates WHERE id = ?`;
+  const sql = `SELECT canidates.*, parties.name AS party_name FROM canidates LEFT JOIN parties ON canidates.party_id = parties.id WHERE canidates.id = ?`;
   const params = [req.params.id];
 
   db.query(sql, params, (err, row) => {

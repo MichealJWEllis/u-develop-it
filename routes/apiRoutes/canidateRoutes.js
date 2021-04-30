@@ -18,7 +18,7 @@ router.get('/canidates', (req, res) => {
     })
 })
 
-// Get a single candidate
+// Get a single canidate
 router.get('/canidates/:id', (req, res) => {
     const sql = `SELECT canidates.*, parties.name AS party_name FROM canidates LEFT JOIN parties ON canidates.party_id = parties.id WHERE canidates.id = ?`;
     const params = [req.params.id];
